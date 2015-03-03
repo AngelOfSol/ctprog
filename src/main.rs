@@ -8,6 +8,7 @@ extern crate sdl2;
 
 use std::old_io::File;
 use std::old_io::BufferedReader;
+use std::old_io::BufferedWriter;
 
 use regex::Regex;
 
@@ -196,9 +197,15 @@ fn main() {
 		println!("");
 		println!("New Card:");
 
+		let out_file = Path::new("translated.txt");
+		let mut out_file_writer = BufferedWriter::new(File::create(&out_file));
+
 		for t in data_array {
+			write!(& mut out_file_writer, "{}", t);
 			print!("{}", t);
 		}
+
+		out_file_writer.flush().unwrap();
 		println!("");
 
 		break;

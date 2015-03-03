@@ -1,16 +1,11 @@
-// changing state
-_ "１" "^(体|枚)" "を" _ "から" _ "にする" => "Put a $1 to $4 from $3"
-自分の _ １枚を _ に置き => "put a card from your $1 to $2 "
-_ １体を _ に置く => "put one of $1 to $2"
-_ ２体を _ に置く => "put 2 of $1 to $2"
-_ は _ を得る => "$1 gains $2"
-_ から _ にする => "put this from $1 to $2"
-自分の控え室の _ １枚を _ に置く => "put one of your $1 in your Waiting Room to $2"
-このカードをエクストラデッキに _ で戻す => "send this card to the Extra Deck $1"
-目標の _ のキャラ１体を _ にし => "put target $1 character to $2"
-自分は _ を使用できない => "you can't use $1"
-目標の相手の _ １体を _ にする => "put target opponent's $1 to $2"
-目標の _ １体を _ にする => "put target $1 to $2"
+﻿// drawing and discardsing
+自分の手札の _  カード "^(\d+)" 枚を控え室に置き => "discard $2 $1 cards"
+自分の手札 _ のカード _ 枚を控え室に置く => "discard $2 $1 cards"
+"自分の手札" _ "枚を控え室に置く" => "discard $1 cards"
+カード _ 枚を引き => "draw $1 cards"
+カード _ 枚を引く => "draw $1 cards"
+カード _ 枚を引いてもよい  => "you may draw $1"
+
 
 // salvaging
 自分の _ の _ １枚を _ に加える => "put a $2 in your $1 into your $3 "
@@ -23,16 +18,32 @@ _ から _ にする => "put this from $1 to $2"
 "アリーナのセットカードが自分のカードの効果やコストでアリーナから別の領域に移動した場合" => "when a Set card leaves the field due to one of your card effects "
 このセットカードが _ にセットされた場合 => "when this Set card is set to your $1"
 お互いのセットカードすべてを控え室に置く => "put all Set cards to Waiting Room"
+_ にセットされているセットカード => "Set card set to one of $1"
 
-// deck manipulation
-自分のデッキの上から _ 枚までを見て => "look at up to the top $1 cards of your deck"
-それらのカードを好きな順番でデッキの上に戻す => "return them to the top of the deck in the order you choose"
+// changing state
+_ "１" "^(体|枚)" "を" _ "から" _ "にする" => "Put a $1 to $4 from $3"
+_ １枚を _ に戻す => "return a $1 to $2"
+自分の _ １枚を _ に置き => "put a card from your $1 to $2 "
+_ １体を _ に置く => "put one of $1 to $2"
+_ ２体を _ に置く => "put 2 of $1 to $2"
+_ は _ を得る => "$1 gains $2"
+_ から _ にする => "put this from $1 to $2"
+自分の控え室の _ １枚を _ に置く => "put one of your $1 in your Waiting Room to $2"
+このカードをエクストラデッキに _ で戻す => "send this card to the Extra Deck $1"
+目標の _ のキャラ１体を _ にし => "put target $1 character to $2"
+自分は _ を使用できない => "you can't use $1"
+目標の相手の _ １体を _ にする => "put target opponent's $1 to $2"
+目標の _ １体を _ にする => "put target $1 to $2"
+相手の控え室のカード１枚をバックヤードに置いてもよい => "you may backyard a card from your opponent's Waiting Room"
+目標の _ １枚を _ に置く => "put target $1 to $2"
+自分の _ １枚を _ に置く => "put a card from your $1 to $2"
+自分の _ を _ に置く => "put one of your $1 to $2"
 
-// conditionals
-自分がカードの効果でカードを引いた場合 => "when you draw a card due to a card ability"
-_ が _ で => "if $1 are $2"
-その _ が _ の場合 => "if that $1 is $2"
-このキャラ以外の自分の _ のキャラが _ 体以上登場してい "^(る場合|て)" => "if you have $2 or more other $1 characters"
+// Deck manipulation
+自分のデッキの上から _ 枚までを見て => "look at up to the top $1 cards of your Deck"
+それらのカードを好きな順番でデッキの上に戻す => "return them to the top of the Deck in the order you choose"
+自分のデッキの上から _ 枚を見てもよい => "you may look at up to the top $1 cards of your Deck"
+そのカードをデッキの上か下に戻す => "you may put that card on the top or bottom of your Deck"
 
 // triggers
 _ がアタックキャラに選ばれた場合 => "when $1 attacks"
@@ -40,6 +51,30 @@ _ がアタックキャラに選ばれた場合 => "when $1 attacks"
 自分のキャラにバトル以外によるダメージが与えられる場合 => "when outside of battle damage is dealt to your characters"
 このキャラが登場かレベルアップかオートレベルアップした場合 => "when this character enters or levels up or auto level ups"
 _ がガードキャラに選ばれた場合 => "when $1 guards"
+_ がアタックキャラやガードキャラに選ばれた場合 => "when $1 attacks or guards"
+自分が _ の効果でカードを引いた場合 => "when you draw a card due to an ability of $1"
+
+// conditionals
+相手の _ が _ 体以上登場している場合 => "if your Opponent has $2 or more $1"
+このキャラが _ で登場した場合 => "if this character is played via $1"
+自分がカードの効果でカードを引いた場合 => "when you draw a card due to a card ability"
+_ が _ で => "if $1 are $2"
+その _ が _ の場合 => "if that $1 is $2"
+このキャラ以外の自分の _ のキャラが _ 体以上登場してい "^(る場合|て)" => "if you have $2 or more other $1 characters"
+このキャラのレベルが _ 以上の場合 => "if this character is Level $1 or higher"
+この能力のコストで _ にしたキャラが _ の場合 => "if the card used for this ability's $1 cost is $2"
+相手の _ が _ 枚以上ある場合 => "if your opponent's $1 has $2 or more cards in it"
+_ を持つ => "$1 carrying"
+
+// costs
+自分の手札 _ 枚を控え室に置いてもよい => "you may discard $1 cards"
+
+// replacements
+かわりに _ つを選び => "instead choose $1"
+
+// order change
+好きな順番で解決する => "and activate them in any order you choose"
+
 
 // durations
 "ターン終了時まで" => "until the end of the turn"
@@ -47,9 +82,10 @@ _ がガードキャラに選ばれた場合 => "when $1 guards"
 バトル終了時まで => "until the end of Battle"
 自分のメインフェイズ開始時 => "at the beginning of your Main Phase"
 バトルフェイズ開始時 => "at the start of Battle Phase"
+自分のメインフェイズに => "during your Main Phase "
 
 // damage
-"目標のキャラ１体に" _ "ダメージを与える" => "target character takes $1 damage"
+"目標のキャラ１体に" _ "ダメージを与える" => "deal $1 damage to target character"
 そのダメージを _ 減少する => "reduce that damage by $1"
 
 // defense reduce
@@ -63,29 +99,32 @@ _ がガードキャラに選ばれた場合 => "when $1 guards"
 // resting standing reversing
 相手はフレンドを _ にすることができない => "your opponent cannot put his friends to $1"
 
-// skills
-"このキャラは" _ "を得る" => "this character gains $1" 
-
-// drawing and discardsing
-自分の手札 _ のカード _ 枚を控え室に置く => "discard $2 $1 cards"
-"自分の手札" _ "枚を控え室に置く" => "discard $1 cards"
-カード _ 枚を引き => "draw $1 cards"
-カード _ 枚を引く => "draw $1 cards"
-カード _ 枚を引いてもよい  => "you may draw $1"
 
 // abilities
+以下の _ つから _ つを得る => "gain $2 of the following $1"
 以下の _ つから _ つを選ぶ => "choose $2 of the following $1 abilities"
 この能力は _ でも発動できる => "this ability may be used while $1"
 この能力は _ に参加していても発動できる => "this ability can be used in $1"
 この能力は _ でも発動する => "this ability activates while $1"
+この効果で得た _ 以外の _ すべてを失う => "lose all $2 except the $1 granted by this ability"
+
+// skills
+"このキャラは" _ "を得る" => "this character gains $1"
+お互いの手札のキャラカードすべては _ を失う => "all player's characters in their hands lose $1"
+_ を得る => "and gains $1"
 
 // zone changing
 自分の _ のカード _ 枚を _ に置く => "put $2 cards from your $1 to your $3"
 
 // non-field zones
-自分のエクストラデッキの《 _ 》 => "$1 in your extra deck"
+自分のエクストラデッキの《 _ 》 => "$1 in your extra Deck"
+
+// name rearrangenment
+フレンドの「 _ 」 => "「$1」 フレンド"
 
 // character refer
+目標のキャラ１体 => "target character "
+自分の _ の _ すべては => "all of the $2 in your $1"
 そのキャラ => "that character "
 目標の自分のフレンド => "target friend you control "
 このキャラと _ １体 => "this character and $1 "
@@ -95,12 +134,14 @@ _ がガードキャラに選ばれた場合 => "when $1 guards"
 このキャラ => "this character "
 自分の _ が登場している場合 => "If you have a $1 on the Field"
 目標のキャラ１体を _ にする => "put target character to $1"
-自分の => "your"
+自分の => "your "
 
 // power manipulation
 は攻撃力が _ 上昇する => "gain +$1/+0 "
 は耐久力が _ 上昇する => "gain +0/+$1 "
 は攻撃力と耐久力が _ 上昇する => "gain +$1/+$1"
+は攻撃力が _ 上昇し => "gain +$1/+0"
+は耐久力が _ 減少する => "gets -0/-$1"
 
 // continouses
 パートナーにできない => "this can't be your partner"
@@ -114,8 +155,9 @@ _ は => "for $1"
 永続 => "Continous"
 自分か相手 => "you or your opponent"
 バトル => Battle
-キャラ => Character
+キャラ => characters
 その後 => afterwards
+そうした場合 => "if so"
 控え室 => "Waiting Room"
 バックヤード => Backyard
 "パートナー" => "Partner"
@@ -131,6 +173,11 @@ _ は => "for $1"
 "貫通" => "Penetrate"
 手札 => "Hand"
 フレンド => "Friend"
+乱入 => Tresspass
+カード => " card"
+デッキ => " Deck"
+
+_ と _ => "$1 and $2"
 
 _ の _ => "$1 $2"
 
@@ -141,12 +188,29 @@ _ の _ => "$1 $2"
 // grammar fixes
 "character gain" => "character gains"
 "1 cards" => "a card"
-"you or your opponent Partner" => "your or your opponent's Partner
+"1 " _ " cards" => "a $1 card"
+"you or your opponent Partner" => "your or your opponent's Partner"
+"a your character" "^s?" => "one of your characters"
+"a your " _ " character" "^s?" => "one of your $1 characters"
+"one of your card" => "one of your cards"
+"one of your " _ " card" => "one of your $1 cards"
+"one of your Friend" => "one of your Friends"
+"one of your " _ " Friend" => "one of your $1 Friends"
+"a characters card" => "a character card"
+"Setcard" => "Set card"
+Eventcard => "Event card"
+"character" => "Character"
+"a Event" => "an Event"
+"up to the top a card" => "the top card"
+"all of the " _ " card" => "all of the $1 cards"
 
+
+" 's" => "'s"
 "、" => ", "
 "  " => " "
 。 => ".  "
-" ." => ".""
+" ." => "."
+
 
 // capitalizers
 ".  " "^(.)" => ".  \U$1\E"
@@ -155,9 +219,26 @@ _ の _ => "$1 $2"
 "〕" "^(.)" => "〕\U$1\E"
 "〔" "^(.)" => "〔\U$1\E"
 "】" "^(.)" => "】\U$1\E"
-"..." is a literal to match
-_ matches a placeholder 
-"^..." matches a valid regex, do note characters are no longer automatically escaped
+
+
+// for systems without japanese console support
+同 => "Same "
+【 => [
+】 => ]
+〔 => {
+〕 => }
+「 => |
+」 => |
+・ => -
+［ => [
+］ => ]
+『 => '
+』 => '
+
+// "..." is a literal to match
+// _ matches a placeholder 
+// "^..." matches a valid regex, do note characters are no longer automatically escaped
 
 // "自分のキャラすべては、" => "All of your characters gain"
 // make readme with chcp 65001
+// todo: make _ match everything except phrase stoppers instead of splitting everything up by phrases
