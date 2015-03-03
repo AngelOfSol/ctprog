@@ -1,0 +1,7 @@
+"登場" => "Entry"
+"自分の" _ "のキャラ" => "your $1 character"
+"＜OS：" _ "＞" => "[OS]"
+"【表】" => "【Face Up】"
+"【裏】" => "【Face Down】"
+【スタンド】 => 【Stand】
+【リバース】 => 【Reverse】

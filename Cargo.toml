@@ -1,0 +1,11 @@
+[package]
+
+name = "ctprog"
+version = "0.0.1"
+authors = ["jck5199"]
+
+[dependencies]
+regex = "0.1.8"
+
+[dependencies.sdl2]
+git = "https://github.com/AngryLawyer/rust-sdl2"

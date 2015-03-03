@@ -1,0 +1,50 @@
+_ "１" "^(体|枚)" "を" _ "から" _ "にする" => "Put a $1 to $4 from $3"
+"自分のキャラにセットカードがセットされた場合" => "When one of your characters is set with a set card"
+"ターン終了時まで" => "until the end of the turn"
+"アリーナのセットカードが自分のカードの効果やコストでアリーナから別の領域に移動した場合" => "When a set card leaves the field due to one of your card effects"
+"目標のキャラ１体に" _ "ダメージを与える" => "target character takes $1 damage"
+"このキャラは" _ "を得る" => "this character gains $1"
+"自分の手札" _ "枚を控え室に置く" => "Discard $1"
+カード _ 枚を引き => "Draw $1"
+カード _ 枚を引く => "Draw $1"
+以下の _ つから _ つを選ぶ => "choose $2 of the following $1 abilities"
+この能力は _ でも発動できる => "this ability may be used while $1"
+自分のエクストラデッキの《 _ 》 => "$1 in your extra deck"
+カード _ 枚を引いてもよい  => "you may draw $1"
+自分の _ のカード _ 枚を _ に置く => "put $2 cards from your $1 to your $3"
+
+自分の _ のキャラすべて => "all of your $1 characters "
+"自分の" _ "のキャラ" => "your $1 character "
+このキャラ => "this character "
+
+目標のキャラ１体を _ にする => "put target character to $1"
+
+は攻撃力が _ 上昇する => "gain +$1/+0 "
+
+は耐久力が _ 上昇する => "gain +0/+$1 "
+
+は攻撃力と耐久力が _ 上昇する => "gain +$1/+$1"
+
+この能力は _ に参加していても発動できる => "this ability can be used in $1"
+
+バトル => Battle
+その後 => afterwards
+控え室 => "Waiting Room"
+バックヤード => Backyard
+"パートナー" => "Partner"
+"自動" => "Auto"
+"登場" => "Entry"
+"＜OS：" _ "＞" => "【Same OS】"
+"【表】" => "【Face Up】"
+"【裏】" => "【Face Down】"
+スタンド => Stand
+レスト　=> Rest
+リバース => Reverse
+ターン "^(\d+)" => "Turn $1"
+"貫通" => "Penetrate"
+"、" => ", "
+。 => ".  "
+
+"..." is a literal to match
+_ matches a placeholder 
+"^..." matches a valid regex, do note characters are no longer automatically escaped
