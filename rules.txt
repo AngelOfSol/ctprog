@@ -1,4 +1,4 @@
-﻿// drawing and discardsing
+// drawing and discardsing
 自分の手札の _  カード "^(\d+)" 枚を控え室に置き => "discard $2 $1 cards"
 自分の手札 _ のカード _ 枚を控え室に置く => "discard $2 $1 cards"
 "自分の手札" _ "枚を控え室に置く" => "discard $1 cards"
@@ -6,6 +6,16 @@
 カード _ 枚を引く => "draw $1 cards"
 カード _ 枚を引いてもよい  => "you may draw $1"
 
+// damage
+"目標のキャラ１体に" _ "ダメージを与える" => "deal $1 damage to target character"
+そのダメージを _ の体数分減少する  => "reduce that damage by the number of $1"
+そのダメージを _ 減少する => "reduce that damage by $1"
+
+// continouses
+パートナーにできない => "this can't be your partner"
+このキャラ以外の自分の => "your other "
+お互いは => "all players "
+でカードを引くことができない => " do not draw cards due to $1 effects"
 
 // salvaging
 自分の _ の _ １枚を _ に加える => "put a $2 in your $1 into your $3 "
@@ -14,13 +24,20 @@
 自分の控え室の _ カード１枚を手札に加えてもよい => "you may return a $1 card to your hand"
 
 // set cards
+このセットカードがセットされたキャラ => "the character this is set to "
+このセットカードがセットされている _ のキャラは _ 以外のセットカードを追加で１枚セットできる => "you may set another Set card that isn't $2 to the $1 character this is set to"
+このコストで _ に置いたカードが _ の場合 => "if the card put to $1 for this cost is $2"
+このキャラにセットされている _ １枚を _ に置く => "put a $1 set to this character to $2"
 "自分のキャラにセットカードがセットされた場合" => "when one of your characters is set with a Set card "
 "アリーナのセットカードが自分のカードの効果やコストでアリーナから別の領域に移動した場合" => "when a Set card leaves the field due to one of your card effects "
 このセットカードが _ にセットされた場合 => "when this Set card is set to your $1"
 お互いのセットカードすべてを控え室に置く => "put all Set cards to Waiting Room"
 _ にセットされているセットカード => "Set card set to one of $1"
 
+
 // changing state
+かわりに _ にする => "instead put it to $1"
+お互いの _ のカード _ 枚を _ に置く => "put $2 cards from any player's $1 to $3"
 _ "１" "^(体|枚)" "を" _ "から" _ "にする" => "Put a $1 to $4 from $3"
 _ １枚を _ に戻す => "return a $1 to $2"
 自分の _ １枚を _ に置き => "put a card from your $1 to $2 "
@@ -70,6 +87,8 @@ _ が _ で => "if $1 are $2"
 相手の _ が _ 枚以上ある場合 => "if your opponent's $1 has $2 or more cards in it"
 _ を持つ => "$1 carrying"
 この能力のコストで控え室に置いたカードが _ の場合 => "if you discard $1 for this ability's cost"
+自分の _ が _ 体以上登場している場合 => "if you have $2 or more $1"
+自分のキャラすべてが _ の場合 => "if all your characters are $1"
 
 // costs
 自分の手札 _ 枚を控え室に置いてもよい => "you may discard $1 cards"
@@ -80,7 +99,6 @@ _ を持つ => "$1 carrying"
 // order change
 好きな順番で解決する => "and activate them in any order you choose"
 
-
 // durations
 "ターン終了時まで" => "until the end of the turn"
 バトルフェイズ終了時まで => "until the end of Battle Phase"
@@ -88,10 +106,10 @@ _ を持つ => "$1 carrying"
 自分のメインフェイズ開始時 => "at the beginning of your Main Phase"
 バトルフェイズ開始時 => "at the start of Battle Phase"
 自分のメインフェイズに => "during your Main Phase "
+このキャラがバトルに参加している場合 => "while this character is in Battle"
 
-// damage
-"目標のキャラ１体に" _ "ダメージを与える" => "deal $1 damage to target character"
-そのダメージを _ 減少する => "reduce that damage by $1"
+
+
 
 // defense reduce
 相手の _ すべては耐久力が _ 減少する => "reduce the defense of all of your opponent's $1 by $2"
@@ -105,10 +123,6 @@ _ を持つ => "$1 carrying"
 相手はフレンドを _ にすることができない => "your opponent cannot put his friends to $1"
 
 
-// continouses
-パートナーにできない => "this can't be your partner"
-このキャラ以外の自分の => "your other "
-
 // abilities
 以下の _ つから _ つを得る => "gain $2 of the following $1"
 以下の _ つから _ つを選ぶ => "choose $2 of the following $1 abilities"
@@ -120,6 +134,7 @@ _ を持つ => "$1 carrying"
 カードの効果 => "ability of a card"
 
 // skills
+バトル相手のスキルすべてを無効にする => "negate all skills of the Battle Opponent"
 "このキャラは" _ "を得る" => "this character gains $1"
 お互いの手札のキャラカードすべては _ を失う => "all player's characters in their hands lose $1"
 _ を得る => "and gains $1"
@@ -133,6 +148,14 @@ _ を得る => "and gains $1"
 // name rearrangenment
 フレンドの「 _ 」 => "「$1」 フレンド "
 パートナーの「 _ 」 => "「$1」 パートナー "
+
+// power manipulation
+は攻撃力が _ 上昇する => "gain +$1/+0 "
+は耐久力が _ 上昇する => "gain +0/+$1 "
+は攻撃力と耐久力が _ 上昇する => "gain +$1/+$1"
+
+は攻撃力が _ 上昇し => "gain +$1/+0"
+は耐久力が _ 減少する => "gets -0/-$1"
 
 // character refer
 目標のキャラ１体 => "target character "
@@ -148,15 +171,11 @@ _ を得る => "and gains $1"
 目標のキャラ１体を _ にする => "put target character to $1"
 自分の => "your "
 
-// power manipulation
-は攻撃力が _ 上昇する => "gain +$1/+0 "
-は耐久力が _ 上昇する => "gain +0/+$1 "
-は攻撃力と耐久力が _ 上昇する => "gain +$1/+$1"
-は攻撃力が _ 上昇し => "gain +$1/+0"
-は耐久力が _ 減少する => "gets -0/-$1"
+_ てもよい => "you may $1 "
+_ は => "for $1 "
+_ すべて => "all $1 "
 
-_ は => "for $1"
-
+かわりに => "instead "
 レベル => "Level"
 セット => "Set"
 イベント => "Event"
@@ -170,7 +189,7 @@ _ は => "for $1"
 そうした場合 => "if so"
 控え室 => "Waiting Room"
 バックヤード => Backyard
-"パートナー" => "Partner"
+"パートナー" => "Partner "
 "自動" => "Auto"
 "登場" => "Entry"
 "＜OS：" _ "＞" => "【Same OS】"
@@ -219,6 +238,8 @@ _ の _ => "$1 $2"
 "one of your " _ " card" => "one of your $1 cards"
 "one of your Friend" => "one of your Friends"
 "one of your " _ " Friend" => "one of your $1 Friends"
+"or more Friend" => "or more Friends"
+"or more " _ " Friend" => "or more $1 Friends"
 "a characters card" => "a character card"
 "up to the top a card" => "the top card"
 "all of the " _ " card" => "all of the $1 cards"
@@ -266,3 +287,4 @@ Eventcard => "Event card"
 // make readme with chcp 65001
 // todo: make _ match everything except phrase stoppers instead of splitting everything up by phrases
 // http://chaos-tcg.com/jsp/cardlist?cardno=LoS-065 last translated card
+// todo: fix rule about no cards due to auto effects
