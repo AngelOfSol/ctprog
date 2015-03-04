@@ -6,6 +6,7 @@
 カード _ 枚を引く => "draw $1 cards"
 カード _ 枚を引いてもよい  => "you may draw $1"
 
+
 // damage
 "目標のキャラ１体に" _ "ダメージを与える" => "deal $1 damage to target character"
 そのダメージを _ の体数分減少する  => "reduce that damage by the number of $1"
@@ -35,6 +36,22 @@
 _ にセットされているセットカード => "Set card set to one of $1"
 
 
+// conditionals
+このキャラが自分のカードの効果やコストで _ から _ になった場合 => "if this character becomes $2 from $1 due to an ability or cost of one of your cards"
+相手の _ が _ 体以上登場している場合 => "if your Opponent has $2 or more $1"
+このキャラが _ で登場した場合 => "if this character is played via $1"
+自分がカードの効果でカードを引いた場合 => "when you draw a card due to a card ability"
+_ が _ で => "if $1 are $2"
+その _ が _ の場合 => "if that $1 is $2"
+このキャラ以外の自分の _ のキャラが _ 体以上登場してい "^(る場合|て)" => "if you have $2 or more other $1 characters"
+このキャラのレベルが _ 以上の場合 => "if this character is Level $1 or higher"
+この能力のコストで _ にしたキャラが _ の場合 => "if the card used for this ability's $1 cost is $2"
+相手の _ が _ 枚以上ある場合 => "if your opponent's $1 has $2 or more cards in it"
+_ を持つ => "$1 carrying"
+この能力のコストで控え室に置いたカードが _ の場合 => "if you discard $1 for this ability's cost"
+自分の _ が _ 体以上登場している場合 => "if you have $2 or more $1"
+自分のキャラすべてが _ の場合 => "if all your characters are $1"
+
 // changing state
 かわりに _ にする => "instead put it to $1"
 お互いの _ のカード _ 枚を _ に置く => "put $2 cards from any player's $1 to $3"
@@ -58,6 +75,8 @@ _ から _ にする => "put this from $1 to $2"
 "^(【裏】)" になった => "becomes $1"
 "^(【裏】)" から _ になった => "becomes $2 from $1"
 自分の _ の _ は _ として扱う => "treat your $1 's $2 as $3"
+
+
 // Deck manipulation
 自分のデッキの上から _ 枚までを見て => "look at up to the top $1 cards of your Deck"
 それらのカードを好きな順番でデッキの上に戻す => "return them to the top of the Deck in the order you choose"
@@ -75,20 +94,7 @@ _ がアタックキャラやガードキャラに選ばれた場合 => "when $1
 相手の _ が _ で _ 場合 => "when one of your Opponent's $1 $3 due to $2"
 自分の _ のカードが _ 場合 => "when a card from your $1 $2"
 
-// conditionals
-相手の _ が _ 体以上登場している場合 => "if your Opponent has $2 or more $1"
-このキャラが _ で登場した場合 => "if this character is played via $1"
-自分がカードの効果でカードを引いた場合 => "when you draw a card due to a card ability"
-_ が _ で => "if $1 are $2"
-その _ が _ の場合 => "if that $1 is $2"
-このキャラ以外の自分の _ のキャラが _ 体以上登場してい "^(る場合|て)" => "if you have $2 or more other $1 characters"
-このキャラのレベルが _ 以上の場合 => "if this character is Level $1 or higher"
-この能力のコストで _ にしたキャラが _ の場合 => "if the card used for this ability's $1 cost is $2"
-相手の _ が _ 枚以上ある場合 => "if your opponent's $1 has $2 or more cards in it"
-_ を持つ => "$1 carrying"
-この能力のコストで控え室に置いたカードが _ の場合 => "if you discard $1 for this ability's cost"
-自分の _ が _ 体以上登場している場合 => "if you have $2 or more $1"
-自分のキャラすべてが _ の場合 => "if all your characters are $1"
+
 
 // costs
 自分の手札 _ 枚を控え室に置いてもよい => "you may discard $1 cards"
@@ -286,5 +292,5 @@ Eventcard => "Event card"
 // "自分のキャラすべては、" => "All of your characters gain"
 // make readme with chcp 65001
 // todo: make _ match everything except phrase stoppers instead of splitting everything up by phrases
-// http://chaos-tcg.com/jsp/cardlist?cardno=LoS-065 last translated card
+// http://chaos-tcg.com/jsp/cardlist?cardno=LoS-063 last translated card
 // todo: fix rule about no cards due to auto effects
